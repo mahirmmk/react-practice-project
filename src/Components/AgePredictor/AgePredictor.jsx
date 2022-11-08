@@ -1,7 +1,8 @@
 import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
-
+import { Link } from 'react-router-dom'  
+import BackButton from '../Others/BackButton'
 function AgePredictor() {
     const [name, setName]=useState("")
     const [data, setData]=useState(null)
@@ -14,22 +15,25 @@ function AgePredictor() {
 
   return (
     <>
-    <div  style={{backgroundColor:"gold", minHeight:"95vh"}} >
-        <h1>Age Predictor App</h1>
-        <input onChange={(e)=>setName(e.target.value)} type="text" placeholder='Enter you Name' />
-        <button onClick={getData} >Predict Age</button>
-        <div style={
-            {border:"1px solid grey", 
-            backgroundColor:"lightseagreen", 
-            width:"50%" , 
-            margin:"auto auto"
-            }}>
-            <h1>Name: {data?.name} </h1>
-            <h1>Age:{data?.age}</h1>
-            <h1>Count:{data?.count}</h1>
+    <div className='bg-orange-100 min-h-screen'>
+      <div>
+        <BackButton />
+      </div>
+      <div className='text-center'>
+        <p className='text-5xl p-2 m-1 text-center'> Age Predictor App </p>
+        <input className='outline-2 outline-gray-700 rounded-lg p-2' onChange={(e)=>setName(e.target.value)} type="text" placeholder='Enter you Name' />
+        <button className="border-1 bg-blue-200 border-blue-800 rounded-lg p-2 hover:bg-blue-700 hover:text-blue-100 duration-300 mx-2" onClick={getData} >Predict Age</button>
+        <div className='my-2 text-3xl p-2 bg-slate-400'>
+          <p>Name:  {data?.name} </p>
+          <p>Age: {data?.age}</p>
+          <p>Count:  {data?.count}</p>
+
         </div>
+      </div>
         
+
     </div>
+  
     </>
   )
 }

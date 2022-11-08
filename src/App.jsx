@@ -9,6 +9,12 @@ import TodoListApp from './Components/TodoList/TodoListApp';
 import CatFact from './Components/CatFactApp/CatFact';
 import AgePredictor from './Components/AgePredictor/AgePredictor';
 import ExcuseGenrator from './Components/ExcuseGenrator/ExcuseGenrator';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Home from './Pages/Home';
+import NavbarComponent from './Components/Navbar';
+import PageNotFount from './Components/404/PageNotFount';
+import About from './Components/About/About';
+import Projects from './Components/Projects';
 function  App() {
   let planets=[
     {name:"mercury", isGaseous: false},
@@ -26,17 +32,32 @@ function  App() {
 
   return (
     <>
-    <ExcuseGenrator/>
-    <AgePredictor/>
-    <CatFact/>
-    <TodoListApp/>
-    <Counter/>
-    <ExampleShowText/>
+    <Router >
+      <NavbarComponent />
+      <Routes>
+        <Route path='/' element={< Home />}  />
+        <Route path='/home' element={< Home />}  />
+        <Route path='/todo' element={< TodoListApp />}  />
+        <Route path='/counter' element={< Counter />}  />
+        <Route path='/catfact' element={< CatFact />}  />
+        <Route path='/excuse' element={< ExcuseGenrator />}  />
+        <Route path='/agepredict' element={<AgePredictor/>}/>
+        <Route path='/usestate' element={<ExampleShowText/>}/>
+        <Route path='/*' element={<PageNotFount/>}/>
+        <Route path='about' element={<About/>}/>
+        <Route path='projects' element={<Projects/>}/>
+      </Routes>
+
+    </Router>
+    {/*
+    
+  
+    
     <ExampleUseState/>
     <Header></Header>
     <Jobs  salary={5000} position="ceo" company="tcs" />
     <Jobs  salary={50000} position="Inforamation Processing Specialist" company="Tata consultancy Services" />
-    { planets.map((ele)=>  <ExampleConditionalReder name={ele.name} isGaseous={ele.isGaseous}/> ) }
+    { planets.map((ele)=>  <ExampleConditionalReder name={ele.name} isGaseous={ele.isGaseous}/> ) } */}
     </>
   )
 }
